@@ -51,7 +51,7 @@ class ProfileView: UIView {
         createGradientLayer()
         
         addSubview(labelUserInfo)
-        labelUserInfo.anchor(top: nil,
+        _ = labelUserInfo.anchor(top: nil,
                              bottom: bottomAnchor,
                              leading: leadingAnchor,
                              trailing: trailingAnchor,
@@ -86,7 +86,7 @@ class ProfileView: UIView {
     fileprivate func createImageBarStackView(){
         addSubview(imageBarStackView)
         
-        imageBarStackView.anchor(top: topAnchor, bottom: nil, leading: leadingAnchor, trailing: trailingAnchor, padding: .init(top: 8, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 4))
+        _ = imageBarStackView.anchor(top: topAnchor, bottom: nil, leading: leadingAnchor, trailing: trailingAnchor, padding: .init(top: 8, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 4))
         imageBarStackView.spacing = 4
         imageBarStackView.distribution = .fillEqually
 
@@ -120,13 +120,11 @@ class ProfileView: UIView {
         
     }
     
-    var displayIndex = 0
-    
     @objc func catchTheTap(tapGesture: UITapGestureRecognizer){
        
         let tapLocation = tapGesture.location(in: nil)
         let nextDisplayTransition = tapLocation.x > frame.width / 2 ? true : false
-        if nextDisplayTransition {
+        if nextDisplayTransition {
             userViewModel.getNextDisplay()
         } else {
             userViewModel.getPreviousDisplay()
@@ -163,7 +161,7 @@ class ProfileView: UIView {
         let translation = panGesture.translation(in: nil)
         
         let degree : CGFloat = translation.x / 10
-        let radian = (degree * CGFloat.pi) / 180 // degree to radian
+        _ = (degree * CGFloat.pi) / 180 // degree to radian
         
         let rotateTransform = CGAffineTransform(rotationAngle: -25) // pozitif deger sola, negatif saga dondurur.
         self.transform = rotateTransform.translatedBy(x: translation.x, y: translation.y) // .translatedBy ile mevcut olan AffineTransform'dan yeni bir transform oluşturur.

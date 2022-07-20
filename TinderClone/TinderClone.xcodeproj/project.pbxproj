@@ -11,12 +11,14 @@
 		E213F0CC28853F50003756D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213F0CB28853F50003756D5 /* AppDelegate.swift */; };
 		E213F0CE28853F50003756D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213F0CD28853F50003756D5 /* SceneDelegate.swift */; };
 		E213F0D028853F50003756D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213F0CF28853F50003756D5 /* MainViewController.swift */; };
-		E213F0D328853F50003756D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E213F0D128853F50003756D5 /* Main.storyboard */; };
 		E213F0D528853F51003756D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E213F0D428853F51003756D5 /* Assets.xcassets */; };
 		E213F0D828853F51003756D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E213F0D628853F51003756D5 /* LaunchScreen.storyboard */; };
 		E213F0E128854493003756D5 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213F0E028854493003756D5 /* Extensions+UIView.swift */; };
 		E213F0E328854538003756D5 /* Extensions+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213F0E228854538003756D5 /* Extensions+UIColor.swift */; };
 		E213F0E62885699E003756D5 /* BottomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213F0E52885699E003756D5 /* BottomStackView.swift */; };
+		E262577E2887E3040032BC61 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E262577D2887E3040032BC61 /* RegisterViewController.swift */; };
+		E26257832887FB100032BC61 /* PrivateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26257822887FB100032BC61 /* PrivateTextField.swift */; };
+		E2C12B1C288835DF007F366A /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C12B1B288835DF007F366A /* RegisterViewModel.swift */; };
 		E2D426852886BBC3000FE167 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D426842886BBC3000FE167 /* User.swift */; };
 		E2D426892886C5FC000FE167 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D426882886C5FC000FE167 /* UserProfileViewModel.swift */; };
 		E2D4268B2886CE3B000FE167 /* Ads.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4268A2886CE3B000FE167 /* Ads.swift */; };
@@ -29,13 +31,15 @@
 		E213F0CB28853F50003756D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E213F0CD28853F50003756D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E213F0CF28853F50003756D5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		E213F0D228853F50003756D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E213F0D428853F51003756D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E213F0D728853F51003756D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E213F0D928853F51003756D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E213F0E028854493003756D5 /* Extensions+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
 		E213F0E228854538003756D5 /* Extensions+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIColor.swift"; sourceTree = "<group>"; };
 		E213F0E52885699E003756D5 /* BottomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomStackView.swift; sourceTree = "<group>"; };
+		E262577D2887E3040032BC61 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E26257822887FB100032BC61 /* PrivateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateTextField.swift; sourceTree = "<group>"; };
+		E2C12B1B288835DF007F366A /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		E2D426842886BBC3000FE167 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E2D426882886C5FC000FE167 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		E2D4268A2886CE3B000FE167 /* Ads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ads.swift; sourceTree = "<group>"; };
@@ -82,17 +86,12 @@
 		E213F0CA28853F50003756D5 /* TinderClone */ = {
 			isa = PBXGroup;
 			children = (
-				E2D426872886C56D000FE167 /* ViewModel */,
-				E2D426862886C552000FE167 /* Controller */,
-				E2D426832886BBBA000FE167 /* Model */,
 				E213F0E42885695E003756D5 /* View */,
+				E2D426872886C56D000FE167 /* ViewModel */,
+				E2D426832886BBBA000FE167 /* Model */,
+				E2D426862886C552000FE167 /* Controller */,
 				E213F0DF2885447D003756D5 /* Extensions */,
-				E213F0CB28853F50003756D5 /* AppDelegate.swift */,
-				E213F0CD28853F50003756D5 /* SceneDelegate.swift */,
-				E213F0D128853F50003756D5 /* Main.storyboard */,
-				E213F0D428853F51003756D5 /* Assets.xcassets */,
-				E213F0D628853F51003756D5 /* LaunchScreen.storyboard */,
-				E213F0D928853F51003756D5 /* Info.plist */,
+				E262577F2887E5090032BC61 /* AppResources */,
 			);
 			path = TinderClone;
 			sourceTree = "<group>";
@@ -109,9 +108,30 @@
 		E213F0E42885695E003756D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E26257812887EB810032BC61 /* Login */,
 				E20989822885959E00D47767 /* HomePage */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		E262577F2887E5090032BC61 /* AppResources */ = {
+			isa = PBXGroup;
+			children = (
+				E213F0CB28853F50003756D5 /* AppDelegate.swift */,
+				E213F0CD28853F50003756D5 /* SceneDelegate.swift */,
+				E213F0D928853F51003756D5 /* Info.plist */,
+				E213F0D428853F51003756D5 /* Assets.xcassets */,
+				E213F0D628853F51003756D5 /* LaunchScreen.storyboard */,
+			);
+			path = AppResources;
+			sourceTree = "<group>";
+		};
+		E26257812887EB810032BC61 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E26257822887FB100032BC61 /* PrivateTextField.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		E2D426832886BBBA000FE167 /* Model */ = {
@@ -127,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				E213F0CF28853F50003756D5 /* MainViewController.swift */,
+				E262577D2887E3040032BC61 /* RegisterViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -135,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				E2D426882886C5FC000FE167 /* UserProfileViewModel.swift */,
+				E2C12B1B288835DF007F366A /* RegisterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -199,7 +221,6 @@
 			files = (
 				E213F0D828853F51003756D5 /* LaunchScreen.storyboard in Resources */,
 				E213F0D528853F51003756D5 /* Assets.xcassets in Resources */,
-				E213F0D328853F50003756D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,10 +234,13 @@
 				E2098981288591ED00D47767 /* ProfileView.swift in Sources */,
 				E213F0D028853F50003756D5 /* MainViewController.swift in Sources */,
 				E213F0CC28853F50003756D5 /* AppDelegate.swift in Sources */,
+				E26257832887FB100032BC61 /* PrivateTextField.swift in Sources */,
+				E262577E2887E3040032BC61 /* RegisterViewController.swift in Sources */,
 				E2D426892886C5FC000FE167 /* UserProfileViewModel.swift in Sources */,
 				E2D4268B2886CE3B000FE167 /* Ads.swift in Sources */,
 				E213F0E62885699E003756D5 /* BottomStackView.swift in Sources */,
 				E213F0E128854493003756D5 /* Extensions+UIView.swift in Sources */,
+				E2C12B1C288835DF007F366A /* RegisterViewModel.swift in Sources */,
 				E2D426852886BBC3000FE167 /* User.swift in Sources */,
 				E213F0CE28853F50003756D5 /* SceneDelegate.swift in Sources */,
 				E213F0E328854538003756D5 /* Extensions+UIColor.swift in Sources */,
@@ -227,14 +251,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E213F0D128853F50003756D5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E213F0D228853F50003756D5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E213F0D628853F51003756D5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -368,10 +384,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TinderClone/Info.plist;
+				INFOPLIST_FILE = TinderClone/AppResources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -383,7 +398,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -395,10 +410,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TinderClone/Info.plist;
+				INFOPLIST_FILE = TinderClone/AppResources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -410,7 +424,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

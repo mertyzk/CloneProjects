@@ -11,6 +11,7 @@ class MainViewController: UIViewController {
 
     //MARK: - Header menu
     let headerStackView = HeaderStackView()
+    //MARK: - Middle Area (Profile Area)
     let profileMainView = UIView()
     //MARK: - Footer menu
     let bottomStackView = BottomStackView()
@@ -29,6 +30,10 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        headerStackView.profileButton.addTarget(self, action: #selector(pressProfileButton), for: .touchUpInside)
+        
+        
         editLayout()
         setProfileScreen()
     }
@@ -38,7 +43,7 @@ class MainViewController: UIViewController {
         let globalStackView = UIStackView(arrangedSubviews: [headerStackView, profileMainView, bottomStackView])
         globalStackView.axis = .vertical
         view.addSubview(globalStackView)
-        globalStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+        _ = globalStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
                                bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                leading: view.leadingAnchor,
                                trailing: view.trailingAnchor)
@@ -57,6 +62,13 @@ class MainViewController: UIViewController {
             profileMainView.addSubview(profileView)
             profileView.fillSuperView()
         }
+    }
+    
+    
+    @objc func pressProfileButton(){
+        let registerVC = RegisterViewController()
+        present(registerVC, animated: true, completion: nil)
+        
     }
 
 
