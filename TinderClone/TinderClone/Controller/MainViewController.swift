@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import Firebase
 
 class MainViewController: UIViewController {
-
+    
     //MARK: - Header menu
     let headerStackView = HeaderStackView()
     //MARK: - Middle Area (Profile Area)
@@ -16,7 +17,9 @@ class MainViewController: UIViewController {
     //MARK: - Footer menu
     let bottomStackView = BottomStackView()
     
-    var usersProfileViewModel : [UserProfileViewModel] = {
+    var usersProfileViewModel : [UserProfileViewModel] = []
+    
+    /*var usersProfileViewModel : [UserProfileViewModel] = {
        let profiles = [
         User(userName: "Ahmet", job: "Mühendis", age: 25, imageNames: ["huy-phan-QCF2ykBsC2I-unsplash.jpg"]),
         User(userName: "Kerem", job: "Matematik", age: 21, imageNames: ["photo-nic-co-uk-nic-IFUwpyV8Igg-unsplash.jpg"]),
@@ -26,20 +29,21 @@ class MainViewController: UIViewController {
     ] as [CreateProfileViewModel]
         let viewModels =  profiles.map ({ $0.createUserProfileViewModel() })
         return viewModels
-    }()
+    }()*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         headerStackView.profileButton.addTarget(self, action: #selector(pressProfileButton), for: .touchUpInside)
         
-        
         editLayout()
         setProfileScreen()
+        getByUserInfoFromFirestore()
     }
     
     //MARK: - Editing layout function
     func editLayout(){
+        view.backgroundColor = .white
         let globalStackView = UIStackView(arrangedSubviews: [headerStackView, profileMainView, bottomStackView])
         globalStackView.axis = .vertical
         view.addSubview(globalStackView)
@@ -64,13 +68,30 @@ class MainViewController: UIViewController {
         }
     }
     
-    
     @objc func pressProfileButton(){
         let registerVC = RegisterViewController()
         present(registerVC, animated: true, completion: nil)
         
     }
-
+    
+    func getByUserInfoFromFirestore(){
+        Firestore.firestore().collection("Users").getDocuments { snapshot, error in
+            if let error = error {
+                print("kullanıcılar getirilriken hata oluştu: \(error)")
+                return
+            }
+            
+            snapshot?.documents.forEach({ documentSnapshot in
+                let userData = documentSnapshot.data()
+                let user = User(infos: userData)
+                self.usersProfileViewModel.append(user.createUserProfileViewModel())
+            })
+            
+            self.setProfileScreen()
+            
+        }
+    }
+    
 
 }
 

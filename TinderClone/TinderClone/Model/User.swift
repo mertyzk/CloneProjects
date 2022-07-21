@@ -14,6 +14,16 @@ struct User: CreateProfileViewModel {
     let age : Int
     let imageNames : [String]
     
+    init(infos: [String : Any]) {
+        self.userName = infos["NameSurname"] as? String ?? ""
+        self.age = 0
+        self.job = "engineer"
+        
+        let imageURL = infos["ImageURL"] as? String ?? ""
+        self.imageNames = [imageURL]
+    }
+    
+    
     func createUserProfileViewModel() -> UserProfileViewModel { // model, view model ile bu fonksiyon araciligiyla haberlesir. UserProfileViewModel ile haberlesiyor.
         let attributedText = NSMutableAttributedString(string: userName,
                                                        attributes: [.font : UIFont.systemFont(ofSize: 30, weight: .heavy)])

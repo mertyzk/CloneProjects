@@ -6,15 +6,24 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileView: UIView {
 
+    fileprivate let imgProfile = UIImageView(image: UIImage(named: "brooke-cagle-Y3L_ZQaw9Wo-unsplash.jpg"))
+    fileprivate let gradientLayer = CAGradientLayer()
+    fileprivate let labelUserInfo = UILabel()
+    fileprivate let limitValue : CGFloat = 110
+    fileprivate let notSelectedColour = UIColor(white: 0, alpha: 0.3)
     
     var userViewModel : UserProfileViewModel! {
         
         didSet {
             let imagesNames = userViewModel.imageNames.first ?? ""
-            imgProfile.image = UIImage(named: imagesNames)
+            if let url = URL(string: imagesNames) {
+                imgProfile.sd_setImage(with: url)
+            }
+
             labelUserInfo.attributedText = userViewModel.attributedString
             labelUserInfo.textAlignment = userViewModel.infoLocation
             
@@ -28,13 +37,6 @@ class ProfileView: UIView {
         }
         
     }
-    
-    fileprivate let imgProfile = UIImageView(image: UIImage(named: "brooke-cagle-Y3L_ZQaw9Wo-unsplash.jpg"))
-    fileprivate let gradientLayer = CAGradientLayer()
-    fileprivate let labelUserInfo = UILabel()
-    fileprivate let limitValue : CGFloat = 110
-    fileprivate let notSelectedColour = UIColor(white: 0, alpha: 0.3)
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
