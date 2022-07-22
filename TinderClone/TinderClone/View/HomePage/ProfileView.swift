@@ -41,6 +41,20 @@ class ProfileView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        editLayout()
+        
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(catchTheProfilePicture))
+        addGestureRecognizer(panGestureRecognizer)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(catchTheTap))
+        addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    fileprivate func editLayout(){
         layer.cornerRadius = 10
         clipsToBounds = true
         
@@ -61,27 +75,19 @@ class ProfileView: UIView {
         //labelUserInfo.backgroundColor = UIColor(white: 0, alpha: 0.5)
         labelUserInfo.textColor = .white
         labelUserInfo.numberOfLines = 0
-        
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(catchTheProfilePicture))
-        addGestureRecognizer(panGestureRecognizer)
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(catchTheTap))
-        addGestureRecognizer(tapGestureRecognizer)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     fileprivate let imageBarStackView = UIStackView()
     
     fileprivate func setDisplayIndexObserver(){
-        userViewModel.displayIndexObserver = { (index, display) in
+        userViewModel.displayIndexObserver = { (index, imageURL) in
             self.imageBarStackView.arrangedSubviews.forEach { subView in
                 subView.backgroundColor = self.notSelectedColour
             }
             self.imageBarStackView.arrangedSubviews[index].backgroundColor = .white
-            self.imgProfile.image = display
+            if let url = URL(string: imageURL ?? ""){
+                self.imgProfile.sd_setImage(with: url)
+            }
         }
     }
     
@@ -108,14 +114,18 @@ class ProfileView: UIView {
     @objc func catchTheProfilePicture(panGesture: UIPanGestureRecognizer)  {
         
         switch panGesture.state {
-        case .changed:
-            catchTheChangePan(panGesture)
-        case .ended:
-            endPanAnimation(panGesture)
         case .began:
             superview?.subviews.forEach({ subView in
                 subView.layer.removeAllAnimations()
             })
+        case .changed:
+            catchTheChangePan(panGesture)
+        case .ended:
+            endPanAnimation(panGesture)
+            superview?.subviews.forEach({ subView in
+                subView.layer.removeAllAnimations()
+            })
+
         default:
             break
         }

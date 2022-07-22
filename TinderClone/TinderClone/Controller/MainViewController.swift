@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import JGProgressHUD
 
 class MainViewController: UIViewController {
     
@@ -18,27 +19,22 @@ class MainViewController: UIViewController {
     let bottomStackView = BottomStackView()
     
     var usersProfileViewModel : [UserProfileViewModel] = []
-    
-    /*var usersProfileViewModel : [UserProfileViewModel] = {
-       let profiles = [
-        User(userName: "Ahmet", job: "Mühendis", age: 25, imageNames: ["huy-phan-QCF2ykBsC2I-unsplash.jpg"]),
-        User(userName: "Kerem", job: "Matematik", age: 21, imageNames: ["photo-nic-co-uk-nic-IFUwpyV8Igg-unsplash.jpg"]),
-        User(userName: "Ayşe", job: "Veri uzmanı", age: 28, imageNames: ["seth-doyle-b5ul8TBY0S8-unsplash.jpg"]),
-        User(userName: "Multiple User", job: "Multi photos", age: 35, imageNames: ["alisa-anton-6K4xvAMzF7Q-unsplash","allef-vinicius-_Gy8k_I2Qdw-unsplash","allef-vinicius--fyr_ZQuhGc-unsplash"]),
-        Ads(title: "REKKKLAMM", brandName: "REKLAMIN MARKASI", imageName: "nathan-anderson-FHiJWoBodrs-unsplash.jpg")
-    ] as [CreateProfileViewModel]
-        let viewModels =  profiles.map ({ $0.createUserProfileViewModel() })
-        return viewModels
-    }()*/
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        headerStackView.profileButton.addTarget(self, action: #selector(pressProfileButton), for: .touchUpInside)
+        headerStackView.profileButton.addTarget(self, action: #selector(pressSettingsButton), for: .touchUpInside)
+        bottomStackView.refreshButton.addTarget(self, action: #selector(pressRefreshButton), for: .touchUpInside)
         
         editLayout()
-        setProfileScreen()
+        setUserProfilesFireStore()
         getByUserInfoFromFirestore()
+        //tryLogin()
+    }
+    
+    fileprivate func tryLogin(){
+        Auth.auth().signIn(withEmail: "denemegirisi@hotmail.com", password: "123123123")
+        print("oTURUM AÇILDI")
     }
     
     //MARK: - Editing layout function
@@ -58,24 +54,31 @@ class MainViewController: UIViewController {
 
     }
     
-    func setProfileScreen(){
+    @objc func pressSettingsButton(){
+        let settingsVC = SettingsViewController()
+        let navigationController = UINavigationController(rootViewController: settingsVC)
+        present(navigationController, animated: true)
         
-        usersProfileViewModel.forEach { UserProfileViewModel in
-            let profileView = ProfileView(frame: .zero)
-            profileView.userViewModel = UserProfileViewModel
-            profileMainView.addSubview(profileView)
-            profileView.fillSuperView()
-        }
     }
     
-    @objc func pressProfileButton(){
-        let registerVC = RegisterViewController()
-        present(registerVC, animated: true, completion: nil)
-        
+    @objc func pressRefreshButton(){
+        getByUserInfoFromFirestore()
     }
+    
+    
+    var lastIncomingUser : User?
     
     func getByUserInfoFromFirestore(){
-        Firestore.firestore().collection("Users").getDocuments { snapshot, error in
+        
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Fetching Profiles..."
+        hud.show(in: view)
+        let query = Firestore.firestore().collection("Users")//.whereField("Age", isEqualTo: 25)
+            .order(by: "UserID") // UserID alanına gore hepsini siralar.
+            .start(at: [lastIncomingUser?.userID ?? ""]) // son getirilen kullanicinin kullanici ID'sinden itibaren siralamaya baslar.
+            .limit(to: 2) // uygulama acildiginda 2 tane gelir.
+        query.getDocuments { snapshot, error in
+            hud.dismiss()
             if let error = error {
                 print("kullanıcılar getirilriken hata oluştu: \(error)")
                 return
@@ -85,11 +88,31 @@ class MainViewController: UIViewController {
                 let userData = documentSnapshot.data()
                 let user = User(infos: userData)
                 self.usersProfileViewModel.append(user.createUserProfileViewModel())
+                self.lastIncomingUser = user
+                self.createProfileFromUser(user: user)
             })
             
-            self.setProfileScreen()
+            //self.setUserProfilesFireStore()
             
         }
+    }
+    
+    fileprivate func createProfileFromUser(user: User){
+        let profileView = ProfileView(frame: .zero)
+        profileView.userViewModel = user.createUserProfileViewModel()
+        profileMainView.addSubview(profileView)
+        profileView.fillSuperView()
+    }
+    
+    func setUserProfilesFireStore(){
+        
+        usersProfileViewModel.forEach { UserProfileViewModel in
+            let profileView = ProfileView(frame: .zero)
+            profileView.userViewModel = UserProfileViewModel
+            profileMainView.addSubview(profileView)
+            profileView.fillSuperView()
+        }
+        
     }
     
 

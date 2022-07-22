@@ -24,6 +24,8 @@
 		E2D426852886BBC3000FE167 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D426842886BBC3000FE167 /* User.swift */; };
 		E2D426892886C5FC000FE167 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D426882886C5FC000FE167 /* UserProfileViewModel.swift */; };
 		E2D4268B2886CE3B000FE167 /* Ads.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D4268A2886CE3B000FE167 /* Ads.swift */; };
+		E2FC9AF7288AB3220048E4BB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FC9AF6288AB3220048E4BB /* SettingsViewController.swift */; };
+		E2FC9AF9288AC8150048E4BB /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FC9AF8288AC8150048E4BB /* SettingsViewCell.swift */; };
 		E2FE600B2885748100A9BAD4 /* HeaderStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE600A2885748100A9BAD4 /* HeaderStackView.swift */; };
 		F5014246520A34F5BBDE7DDB /* Pods_TinderClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB83887182AFA7744D1A601 /* Pods_TinderClone.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +52,8 @@
 		E2D426842886BBC3000FE167 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E2D426882886C5FC000FE167 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		E2D4268A2886CE3B000FE167 /* Ads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ads.swift; sourceTree = "<group>"; };
+		E2FC9AF6288AB3220048E4BB /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E2FC9AF8288AC8150048E4BB /* SettingsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
 		E2FE600A2885748100A9BAD4 /* HeaderStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderStackView.swift; sourceTree = "<group>"; };
 		F5D84CA26C17F38B7297A4A2 /* Pods-TinderClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderClone.debug.xcconfig"; path = "Target Support Files/Pods-TinderClone/Pods-TinderClone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +133,7 @@
 			children = (
 				E26257812887EB810032BC61 /* Login */,
 				E20989822885959E00D47767 /* HomePage */,
+				E2FC9AF8288AC8150048E4BB /* SettingsViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +174,7 @@
 				E213F0CF28853F50003756D5 /* MainViewController.swift */,
 				E262577D2887E3040032BC61 /* RegisterViewController.swift */,
 				E27B466728895EEA00CC7649 /* Bindable.swift */,
+				E2FC9AF6288AB3220048E4BB /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -314,10 +320,12 @@
 				E27B466828895EEA00CC7649 /* Bindable.swift in Sources */,
 				E2D426892886C5FC000FE167 /* UserProfileViewModel.swift in Sources */,
 				E2D4268B2886CE3B000FE167 /* Ads.swift in Sources */,
+				E2FC9AF7288AB3220048E4BB /* SettingsViewController.swift in Sources */,
 				E213F0E62885699E003756D5 /* BottomStackView.swift in Sources */,
 				E213F0E128854493003756D5 /* Extensions+UIView.swift in Sources */,
 				E2C12B1C288835DF007F366A /* RegisterViewModel.swift in Sources */,
 				E2D426852886BBC3000FE167 /* User.swift in Sources */,
+				E2FC9AF9288AC8150048E4BB /* SettingsViewCell.swift in Sources */,
 				E213F0CE28853F50003756D5 /* SceneDelegate.swift in Sources */,
 				E213F0E328854538003756D5 /* Extensions+UIColor.swift in Sources */,
 				E2FE600B2885748100A9BAD4 /* HeaderStackView.swift in Sources */,

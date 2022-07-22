@@ -22,13 +22,12 @@ class UserProfileViewModel {
     
     fileprivate var displayIndex = 0 {
         didSet {
-            let displayName = imageNames[displayIndex]
-            let imageProfile = UIImage(named: displayName)
-            displayIndexObserver?(displayIndex, imageProfile ?? UIImage())
+            let imageURL = imageNames[displayIndex]
+            displayIndexObserver?(displayIndex, imageURL)
         }
     }
     
-    var displayIndexObserver : ( (Int, UIImage) -> () )?
+    var displayIndexObserver : ( (Int, String?) -> () )?
     
     func getNextDisplay() {
         displayIndex = displayIndex + 1 >= imageNames.count ? 0 : displayIndex + 1
