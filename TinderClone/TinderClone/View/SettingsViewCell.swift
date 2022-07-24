@@ -32,9 +32,8 @@ class SettingsViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        addSubview(textField)
-
+        //contentView.addSubview(textField) 
+        addSubview(textField) //cell.contentView.isUserInteractionEnabled = false (SettingsVC - CellForRowAt Check)
         textField.fillSuperView()
         
     }

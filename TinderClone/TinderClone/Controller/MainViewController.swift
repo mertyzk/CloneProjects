@@ -27,9 +27,42 @@ class MainViewController: UIViewController {
         bottomStackView.refreshButton.addTarget(self, action: #selector(pressRefreshButton), for: .touchUpInside)
         
         editLayout()
-        setUserProfilesFireStore()
-        getByUserInfoFromFirestore()
+        //setUserProfilesFireStore()
+        //getByUserInfoFromFirestore()
         //tryLogin()
+        getByCurrentUser()
+    }
+    
+    fileprivate var currentUser: User?
+    
+    func getByCurrentUser(){
+        
+        profileMainView.subviews.forEach { view in
+            view.removeFromSuperview() // Aynı verileri tekrar getirmesini engellemek icin. Boylece current user her seferinde temizleniyor ve yeniden getiriliyor. veriler tekrarlanmiyor.
+        }
+        
+        /*
+         // Hem SettingsViewController (getByUserInfo fonksiyonu) ve hemde MainViewController'da (getByCurrentUser fonksiyonu) ile veri getirme ihtiyacımız oldu.
+         // Bunun icin Firebase'e bir extension yaziyoruz. (Extensions+Firestore)
+         guard let uid = Auth.auth().currentUser?.uid else { return } // extensions -> Extensions+Firestore yazildi.
+        Firestore.firestore().collection("Users").document(uid).getDocument { snapshot, error in// extensions -> Extensions+Firestore yazildi.
+            if let error = error {// extensions -> Extensions+Firestore yazildi.
+                print("Oturum açan kullanıcı bilgileri getirilken hata meydana geldi \(error)")// extensions -> Extensions+Firestore yazildi.
+                return// extensions -> Extensions+Firestore yazildi.
+            }// extensions -> Extensions+Firestore yazildi.
+            guard let informations = snapshot?.data() else { return }// extensions -> Extensions+Firestore yazildi.
+            self.currentUser = User(infos: informations)// extensions -> Extensions+Firestore yazildi.
+            self.getByUserInfoFromFirestore()// extensions -> Extensions+Firestore yazildi.
+        }*/// extensions -> Extensions+Firestore yazildi.
+        
+        Firestore.firestore().getByCurrentUser { user, error in
+            if let error = error {
+                print("Oturum açan kullanıcı bilgileri getirilken hata meydana geldi \(error)")
+                return
+            }
+            self.currentUser = user
+            self.getByUserInfoFromFirestore()
+        }
     }
     
     fileprivate func tryLogin(){
@@ -56,12 +89,16 @@ class MainViewController: UIViewController {
     
     @objc func pressSettingsButton(){
         let settingsVC = SettingsViewController()
+        settingsVC.delegate = self
         let navigationController = UINavigationController(rootViewController: settingsVC)
         present(navigationController, animated: true)
         
     }
     
     @objc func pressRefreshButton(){
+        profileMainView.subviews.forEach { view in
+            view.removeFromSuperview() // Aynı verileri tekrar getirmesini engellemek icin.
+        }
         getByUserInfoFromFirestore()
     }
     
@@ -70,16 +107,21 @@ class MainViewController: UIViewController {
     
     func getByUserInfoFromFirestore(){
         
+        guard let searchingMinAge = currentUser?.searchMinAge, let searchingMaxAge = currentUser?.searchMaxAge else { return }
+        
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Fetching Profiles..."
         hud.show(in: view)
-        let query = Firestore.firestore().collection("Users")//.whereField("Age", isEqualTo: 25)
+        /*let query = Firestore.firestore().collection("Users")//.whereField("Age", isEqualTo: 25)
             .order(by: "UserID") // UserID alanına gore hepsini siralar.
             .start(at: [lastIncomingUser?.userID ?? ""]) // son getirilen kullanicinin kullanici ID'sinden itibaren siralamaya baslar.
-            .limit(to: 2) // uygulama acildiginda 2 tane gelir.
+            .limit(to: 2) // uygulama acildiginda 2 tane gelir.*/
+        let query = Firestore.firestore().collection("Users")
+            .whereField("Age", isLessThanOrEqualTo: searchingMaxAge) // <= (max degere esit yada daha kucuk: isLessThanOrEqualTo)
+            .whereField("Age", isGreaterThanOrEqualTo: searchingMinAge) // >= (min degere esit yada daha buyuk : isGreaterThanOrEqualTo)
         query.getDocuments { snapshot, error in
             hud.dismiss()
-            if let error = error {
+            if let error = error {
                 print("kullanıcılar getirilriken hata oluştu: \(error)")
                 return
             }
@@ -118,3 +160,10 @@ class MainViewController: UIViewController {
 
 }
 
+
+extension MainViewController: SettingsViewControllerDelegate{
+    func settingsSaved() {
+        getByCurrentUser()
+    }
+
+}

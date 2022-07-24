@@ -13,16 +13,24 @@ struct User: CreateProfileViewModel {
     var job : String?
     var age : Int?
     //let imageNames : [String]
-    var imageURL1 : String
+    var imageURL1 : String?
+    var imageURL2 : String?
+    var imageURL3 : String?
     var userID : String
+    var searchMinAge : Int?
+    var searchMaxAge : Int?
     
     init(infos: [String : Any]) {
         self.userName = infos["NameSurname"] as? String ?? ""
         self.age = infos["Age"] as? Int
         self.job = infos["Job"] as? String
         
-        self.imageURL1 = infos["ImageURL"] as? String ?? ""
+        self.imageURL1 = infos["ImageURL"] as? String
+        self.imageURL2 = infos["ImageURL2"] as? String
+        self.imageURL3 = infos["ImageURL3"] as? String
         self.userID = infos["UserID"] as? String ?? ""
+        self.searchMinAge = infos["MinimumAge"] as? Int
+        self.searchMaxAge = infos["MaximumAge"] as? Int
     }
     
     
@@ -38,8 +46,18 @@ struct User: CreateProfileViewModel {
                                                  attributes: [.font : UIFont.systemFont(ofSize: 25, weight: .regular)]))
         attributedText.append(NSAttributedString(string: "\n\(jobString)",
                                                  attributes: [.font : UIFont.systemFont(ofSize: 20, weight: .light)]))
-
         
-        return UserProfileViewModel(attributedString: attributedText, imageNames: [imageURL1], infoLocation: .left)
+        var imagesURLs = [String]() // fotograf olmasa dahi eklemesini engellemek icin kullandik.
+        if let url = imageURL1, !url.isEmpty {
+            imagesURLs.append(url)
+        }
+        if let url = imageURL2, !url.isEmpty {
+            imagesURLs.append(url)
+        }
+        if let url = imageURL3, !url.isEmpty {
+            imagesURLs.append(url)
+        }
+        
+        return UserProfileViewModel(attributedString: attributedText, imageNames: imagesURLs, infoLocation: .left)
     }
 }
