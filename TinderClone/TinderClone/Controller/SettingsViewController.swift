@@ -90,14 +90,14 @@ class SettingsViewController: UITableViewController {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let datas : [String : Any] = [
             "UserID" : uid,
-            "NameSurname" : currenUser?.userName ?? "No Name Surname",
-            "ImageURL" : currenUser?.imageURL1 ?? "",
-            "ImageURL2" : currenUser?.imageURL2 ?? "",
-            "ImageURL3" : currenUser?.imageURL3 ?? "",
-            "Age" : currenUser?.age ?? -1,
-            "Job" : currenUser?.job ?? "NULL",
-            "MinimumAge" : currenUser?.searchMinAge ?? -1,
-            "MaximumAge" : currenUser?.searchMaxAge ?? -1
+            "NameSurname" : currentUser?.userName ?? "No Name Surname",
+            "ImageURL" : currentUser?.imageURL1 ?? "",
+            "ImageURL2" : currentUser?.imageURL2 ?? "",
+            "ImageURL3" : currentUser?.imageURL3 ?? "",
+            "Age" : currentUser?.age ?? -1,
+            "Job" : currentUser?.job ?? "NULL",
+            "MinimumAge" : currentUser?.searchMinAge ?? -1,
+            "MaximumAge" : currentUser?.searchMaxAge ?? -1
         ]
         Firestore.firestore().collection("Users").document(uid).setData(datas) { error in
             saveDataHud.dismiss()
@@ -117,6 +117,8 @@ class SettingsViewController: UITableViewController {
     @objc fileprivate func logoutButtonPressed(){
         // Logout of the profile
         print("Oturum kapatılıyor.")
+        try? Auth.auth().signOut() //logout
+        dismiss(animated: true, completion: nil)
     }
     
 
@@ -129,7 +131,7 @@ class SettingsViewController: UITableViewController {
         present(imagePicker,animated: true)
     }
     
-    var currenUser : User?
+    var currentUser : User?
     
     fileprivate func getByUserInfo(){
         
@@ -156,7 +158,7 @@ class SettingsViewController: UITableViewController {
                 print("Oturum açan kullanıcı bilgileri getirilken hata meydana geldi \(error)")
                 return
             }
-            self.currenUser = user
+            self.currentUser = user
             self.loadProfilePictures()
             self.tableView.reloadData()
         }
@@ -165,7 +167,7 @@ class SettingsViewController: UITableViewController {
     
     fileprivate func loadProfilePictures(){
         
-        guard let imageURL = currenUser?.imageURL1, let url = URL(string: imageURL) else {
+        guard let imageURL = currentUser?.imageURL1, let url = URL(string: imageURL) else {
             return
         }
         
@@ -173,7 +175,7 @@ class SettingsViewController: UITableViewController {
             self.selectionArea1.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
         
-        guard let imageURL2 = currenUser?.imageURL2, let url2 = URL(string: imageURL2) else {
+        guard let imageURL2 = currentUser?.imageURL2, let url2 = URL(string: imageURL2) else {
             return
         }
         
@@ -181,7 +183,7 @@ class SettingsViewController: UITableViewController {
             self.selectionArea2.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
         
-        guard let imageURL3 = currenUser?.imageURL3, let url3 = URL(string: imageURL3) else {
+        guard let imageURL3 = currentUser?.imageURL3, let url3 = URL(string: imageURL3) else {
             return
         }
         
@@ -191,15 +193,15 @@ class SettingsViewController: UITableViewController {
     }
     
     @objc fileprivate func catchTheNameTextFieldChange(textField : UITextField){
-        self.currenUser?.userName = textField.text
+        self.currentUser?.userName = textField.text
     }
     
     @objc fileprivate func catchTheJobTextFieldChange(textField : UITextField){
-        self.currenUser?.job = textField.text
+        self.currentUser?.job = textField.text
     }
     
     @objc fileprivate func catchTheAgeTextFieldChange(textField : UITextField){
-        self.currenUser?.age = Int(textField.text ?? "")
+        self.currentUser?.age = Int(textField.text ?? "")
     }
     
     @objc fileprivate func minAgeSliderChange(value: UISlider){
@@ -231,8 +233,8 @@ class SettingsViewController: UITableViewController {
         ageRangeCell.minLabel.text = "Min \(minValue)"
         ageRangeCell.maxLabel.text = "Max \(maxValue)"
         
-        currenUser?.searchMinAge = minValue
-        currenUser?.searchMaxAge = maxValue
+        currentUser?.searchMinAge = minValue
+        currentUser?.searchMaxAge = maxValue
         
     }
     
@@ -286,10 +288,10 @@ extension SettingsViewController : UIImagePickerControllerDelegate, UINavigation
             ageRangeCell.maxSlider.addTarget(self, action: #selector(maxAgeSliderChange), for: .valueChanged)
             ageRangeCell.contentView.isUserInteractionEnabled = false
             
-            ageRangeCell.minLabel.text = "Min \(currenUser?.searchMinAge ?? 18)"
-            ageRangeCell.minSlider.value = Float(currenUser?.searchMinAge ?? 18)
-            ageRangeCell.maxLabel.text = "Min \(currenUser?.searchMaxAge ?? 18)"
-            ageRangeCell.maxSlider.value = Float(currenUser?.searchMaxAge ?? 18)
+            ageRangeCell.minLabel.text = "Min \(currentUser?.searchMinAge ?? 18)"
+            ageRangeCell.minSlider.value = Float(currentUser?.searchMinAge ?? 18)
+            ageRangeCell.maxLabel.text = "Min \(currentUser?.searchMaxAge ?? 18)"
+            ageRangeCell.maxSlider.value = Float(currentUser?.searchMaxAge ?? 18)
             
             
             return ageRangeCell
@@ -299,18 +301,18 @@ extension SettingsViewController : UIImagePickerControllerDelegate, UINavigation
         switch indexPath.section {
         case 1:
             cell.textField.placeholder = "Please enter your first and last name."
-            cell.textField.text = currenUser?.userName
+            cell.textField.text = currentUser?.userName
             cell.textField.addTarget(self, action: #selector(catchTheNameTextFieldChange), for: .editingChanged)
         case 2:
             cell.textField.placeholder = "Please enter your age."
             cell.textField.keyboardType = .numberPad
-            if let age = currenUser?.age {
+            if let age = currentUser?.age {
                 cell.textField.text = String(age)
                 cell.textField.addTarget(self, action: #selector(catchTheAgeTextFieldChange), for: .editingChanged)
             }
         case 3:
             cell.textField.placeholder = "Please enter your job."
-            cell.textField.text = currenUser?.job
+            cell.textField.text = currentUser?.job
             cell.textField.addTarget(self, action: #selector(catchTheJobTextFieldChange), for: .editingChanged)
         case 4:
             cell.textField.placeholder = "Please enter a brief information about you."
@@ -351,11 +353,11 @@ extension SettingsViewController : UIImagePickerControllerDelegate, UINavigation
                 print("URL başarıyla alındı : ***** \(url?.absoluteString)")
                 switch buttonSelectImage {
                 case self.selectionArea1:
-                    self.currenUser?.imageURL1 = url?.absoluteString
+                    self.currentUser?.imageURL1 = url?.absoluteString
                 case self.selectionArea2:
-                    self.currenUser?.imageURL2 = url?.absoluteString
+                    self.currentUser?.imageURL2 = url?.absoluteString
                 case self.selectionArea3:
-                    self.currenUser?.imageURL3 = url?.absoluteString
+                    self.currentUser?.imageURL3 = url?.absoluteString
                 default:
                     print("data")
                 }

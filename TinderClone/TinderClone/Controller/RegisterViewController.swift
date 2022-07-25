@@ -26,7 +26,7 @@ class RegisterViewController: UIViewController {
     }()
     
     let textFieldForEmail : PrivateTextField = {
-        let textField = PrivateTextField(padding: 15)
+        let textField = PrivateTextField(padding: 15, height: 45)
         textField.backgroundColor = .white
         textField.placeholder = "Email Adress"
         textField.keyboardType = .emailAddress
@@ -35,7 +35,7 @@ class RegisterViewController: UIViewController {
     }()
     
     let textFieldForNameandSurname : PrivateTextField = {
-        let textField = PrivateTextField(padding: 15)
+        let textField = PrivateTextField(padding: 15, height: 45)
         textField.backgroundColor = .white
         textField.placeholder = "Name - Surname"
         textField.addTarget(self, action: #selector(catchTheTextFieldChange), for: .editingChanged)
@@ -43,7 +43,7 @@ class RegisterViewController: UIViewController {
     }()
     
     let textFieldForPassword : PrivateTextField = {
-        let textField = PrivateTextField(padding: 15)
+        let textField = PrivateTextField(padding: 15, height: 45)
         textField.backgroundColor = .white
         textField.placeholder = "Password"
         textField.isSecureTextEntry = true
@@ -61,6 +61,19 @@ class RegisterViewController: UIViewController {
         button.layer.cornerRadius = 25
         button.isEnabled = false
         button.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
+    let loginButton : UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        button.setTitleColor(.white, for: .normal)
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.backgroundColor = #colorLiteral(red: 0, green: 0.5608807802, blue: 0.003525360953, alpha: 1)
+        button.setTitleColor(.white, for: .disabled)
+        button.layer.cornerRadius = 25
+        button.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -122,6 +135,8 @@ class RegisterViewController: UIViewController {
     
     fileprivate func editLayout(){
         
+        navigationController?.isNavigationBarHidden = true // navigation bar gizlendi
+        
         view.addSubview(registerStackView)
         
         registerStackView.axis = .vertical
@@ -131,6 +146,9 @@ class RegisterViewController: UIViewController {
         _ = registerStackView.anchor(top: nil, bottom: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor,
                                      padding: .init(top: 0, left: 45, bottom: 0, right: 45))
         registerStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        view.addSubview(loginButton)
+        _ = loginButton.anchor(top: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, padding: .init(top: 0, left: 45, bottom: 15, right: 45))
     }
     
     //MARK: - This function catch of the keyboard moves.
@@ -259,6 +277,14 @@ class RegisterViewController: UIViewController {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         present(imagePickerController, animated: true)
+    }
+    
+    @objc fileprivate func loginButtonPressed(){
+        // login ekrani
+        let signInController = UIViewController()
+        signInController.view.backgroundColor = .blue
+        navigationController?.pushViewController(signInController, animated: true)
+        print("click click click click click click")
     }
 
 }

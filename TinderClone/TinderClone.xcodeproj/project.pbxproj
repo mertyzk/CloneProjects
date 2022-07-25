@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E2098981288591ED00D47767 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2098980288591ED00D47767 /* ProfileView.swift */; };
+		E20FE0F1288DB5A50088B40D /* MembershipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20FE0F0288DB5A50088B40D /* MembershipViewModel.swift */; };
+		E20FE0F3288DB8870088B40D /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20FE0F2288DB8870088B40D /* MembershipViewController.swift */; };
 		E213F0CC28853F50003756D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213F0CB28853F50003756D5 /* AppDelegate.swift */; };
 		E213F0CE28853F50003756D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213F0CD28853F50003756D5 /* SceneDelegate.swift */; };
 		E213F0D028853F50003756D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E213F0CF28853F50003756D5 /* MainViewController.swift */; };
@@ -36,6 +38,8 @@
 		6BC8E796273A169ED82682C9 /* Pods-TinderClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinderClone.release.xcconfig"; path = "Target Support Files/Pods-TinderClone/Pods-TinderClone.release.xcconfig"; sourceTree = "<group>"; };
 		8BB83887182AFA7744D1A601 /* Pods_TinderClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TinderClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2098980288591ED00D47767 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		E20FE0F0288DB5A50088B40D /* MembershipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewModel.swift; sourceTree = "<group>"; };
+		E20FE0F2288DB8870088B40D /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		E213F0C828853F50003756D5 /* TinderClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E213F0CB28853F50003756D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E213F0CD28853F50003756D5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +94,15 @@
 				E2098980288591ED00D47767 /* ProfileView.swift */,
 			);
 			path = HomePage;
+			sourceTree = "<group>";
+		};
+		E20FE0EF288DB5590088B40D /* Membership */ = {
+			isa = PBXGroup;
+			children = (
+				E20FE0F0288DB5A50088B40D /* MembershipViewModel.swift */,
+				E20FE0F2288DB8870088B40D /* MembershipViewController.swift */,
+			);
+			path = Membership;
 			sourceTree = "<group>";
 		};
 		E213F0BF28853F50003756D5 = {
@@ -177,6 +190,7 @@
 		E2D426862886C552000FE167 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E20FE0EF288DB5590088B40D /* Membership */,
 				E213F0CF28853F50003756D5 /* MainViewController.swift */,
 				E262577D2887E3040032BC61 /* RegisterViewController.swift */,
 				E27B466728895EEA00CC7649 /* Bindable.swift */,
@@ -334,7 +348,9 @@
 				E2C12B1C288835DF007F366A /* RegisterViewModel.swift in Sources */,
 				E2D426852886BBC3000FE167 /* User.swift in Sources */,
 				E2FC9AF9288AC8150048E4BB /* SettingsViewCell.swift in Sources */,
+				E20FE0F1288DB5A50088B40D /* MembershipViewModel.swift in Sources */,
 				E213F0CE28853F50003756D5 /* SceneDelegate.swift in Sources */,
+				E20FE0F3288DB8870088B40D /* MembershipViewController.swift in Sources */,
 				E213F0E328854538003756D5 /* Extensions+UIColor.swift in Sources */,
 				E2FE600B2885748100A9BAD4 /* HeaderStackView.swift in Sources */,
 			);

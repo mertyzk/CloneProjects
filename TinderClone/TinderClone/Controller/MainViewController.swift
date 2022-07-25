@@ -33,6 +33,17 @@ class MainViewController: UIViewController {
         getByCurrentUser()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser == nil { // oturum acmis bir kullanici yoksa kayit ekranina gider.
+            let registerViewController = RegisterViewController()
+            let navigationController = UINavigationController(rootViewController: registerViewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            present(navigationController, animated: true)
+        }
+    }
+    
+    
     fileprivate var currentUser: User?
     
     func getByCurrentUser(){
@@ -91,6 +102,7 @@ class MainViewController: UIViewController {
         let settingsVC = SettingsViewController()
         settingsVC.delegate = self
         let navigationController = UINavigationController(rootViewController: settingsVC)
+        navigationController.modalPresentationStyle = .fullScreen // ayarlar ekranı hem tüm ekranı kaplayacak hem de viewDidAppear tetiklenecektir.
         present(navigationController, animated: true)
         
     }
@@ -160,10 +172,10 @@ class MainViewController: UIViewController {
 
 }
 
-
 extension MainViewController: SettingsViewControllerDelegate{
     func settingsSaved() {
         getByCurrentUser()
+        print("Haber geldi fonksiyon çalıştı")
     }
 
 }

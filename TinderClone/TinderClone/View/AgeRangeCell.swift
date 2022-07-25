@@ -50,7 +50,7 @@ class AgeRangeCell: UITableViewCell {
         globalStackView.axis = .vertical
         globalStackView.spacing = 15
         addSubview(globalStackView)
-        //contentView.addSubview(globalStackView) ->>> ageRangeCell.contentView.isUserInteractionEnabled = false (SettingsVC - CellForRowAt Check)
+        //contentView.addSubview(globalStackView) //->>> ageRangeCell.contentView.isUserInteractionEnabled = false (SettingsVC - CellForRowAt Check)
         _ = globalStackView.anchor(top: topAnchor, bottom: bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, padding: .init(top: 15, left: 15, bottom: 15, right: 35))
         
     }
