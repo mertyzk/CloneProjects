@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E2A149762901376100EEF552 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A149752901376100EEF552 /* UIColor+Ext.swift */; };
+		E2A149782901382D00EEF552 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A149772901382D00EEF552 /* UIView+Ext.swift */; };
+		E2A1497A2901431900EEF552 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2A149792901431900EEF552 /* GoogleService-Info.plist */; };
 		E2C831AF290123C40078D3AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C831AE290123C40078D3AB /* AppDelegate.swift */; };
 		E2C831B1290123C40078D3AB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C831B0290123C40078D3AB /* SceneDelegate.swift */; };
 		E2C831B3290123C40078D3AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C831B2290123C40078D3AB /* ViewController.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E2A149752901376100EEF552 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		E2A149772901382D00EEF552 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		E2A149792901431900EEF552 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E2C831AB290123C40078D3AB /* InstaClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C831AE290123C40078D3AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2C831B0290123C40078D3AB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E2A149742901375300EEF552 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E2A149752901376100EEF552 /* UIColor+Ext.swift */,
+				E2A149772901382D00EEF552 /* UIView+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E2C831A2290123C40078D3AB = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +71,7 @@
 		E2C831AD290123C40078D3AB /* InstaClone */ = {
 			isa = PBXGroup;
 			children = (
+				E2A149742901375300EEF552 /* Extensions */,
 				E2C831AE290123C40078D3AB /* AppDelegate.swift */,
 				E2C831B0290123C40078D3AB /* SceneDelegate.swift */,
 				E2C831B2290123C40078D3AB /* ViewController.swift */,
@@ -63,6 +79,7 @@
 				E2C831B7290123C60078D3AB /* Assets.xcassets */,
 				E2C831B9290123C60078D3AB /* LaunchScreen.storyboard */,
 				E2C831BC290123C60078D3AB /* Info.plist */,
+				E2A149792901431900EEF552 /* GoogleService-Info.plist */,
 			);
 			path = InstaClone;
 			sourceTree = "<group>";
@@ -103,7 +120,7 @@
 				};
 			};
 			buildConfigurationList = E2C831A6290123C40078D3AB /* Build configuration list for PBXProject "InstaClone" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -126,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2C831BB290123C60078D3AB /* LaunchScreen.storyboard in Resources */,
+				E2A1497A2901431900EEF552 /* GoogleService-Info.plist in Resources */,
 				E2C831B8290123C60078D3AB /* Assets.xcassets in Resources */,
 				E2C831B6290123C40078D3AB /* Main.storyboard in Resources */,
 			);
@@ -139,6 +157,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2C831B3290123C40078D3AB /* ViewController.swift in Sources */,
+				E2A149762901376100EEF552 /* UIColor+Ext.swift in Sources */,
+				E2A149782901382D00EEF552 /* UIView+Ext.swift in Sources */,
 				E2C831AF290123C40078D3AB /* AppDelegate.swift in Sources */,
 				E2C831B1290123C40078D3AB /* SceneDelegate.swift in Sources */,
 			);
@@ -290,11 +310,13 @@
 				DEVELOPMENT_TEAM = BXBLM9X8VJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InstaClone/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -318,11 +340,13 @@
 				DEVELOPMENT_TEAM = BXBLM9X8VJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InstaClone/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
