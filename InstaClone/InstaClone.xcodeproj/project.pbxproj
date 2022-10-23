@@ -3,11 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A6E64DEE9CD2ADB48621C812 /* Pods_InstaClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357061ADEEC9CD9410DF790F /* Pods_InstaClone.framework */; };
+		E221BB88290307BD00A57FF2 /* ICTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E221BB87290307BD00A57FF2 /* ICTabBarController.swift */; };
+		E221BB8A290308E100A57FF2 /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E221BB89290308E100A57FF2 /* UserProfileVC.swift */; };
+		E27299362905236400888E62 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27299352905236400888E62 /* UserProfileHeader.swift */; };
+		E2729939290531D300888E62 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2729938290531D300888E62 /* User.swift */; };
 		E2A149762901376100EEF552 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A149752901376100EEF552 /* UIColor+Ext.swift */; };
 		E2A149782901382D00EEF552 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A149772901382D00EEF552 /* UIView+Ext.swift */; };
 		E2C831AF290123C40078D3AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C831AE290123C40078D3AB /* AppDelegate.swift */; };
@@ -23,6 +27,10 @@
 		290DB055BF64646428FF41D8 /* Pods-InstaClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaClone.release.xcconfig"; path = "Target Support Files/Pods-InstaClone/Pods-InstaClone.release.xcconfig"; sourceTree = "<group>"; };
 		2E11FCF806C7525665093CC6 /* Pods-InstaClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaClone.debug.xcconfig"; path = "Target Support Files/Pods-InstaClone/Pods-InstaClone.debug.xcconfig"; sourceTree = "<group>"; };
 		357061ADEEC9CD9410DF790F /* Pods_InstaClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E221BB87290307BD00A57FF2 /* ICTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ICTabBarController.swift; sourceTree = "<group>"; };
+		E221BB89290308E100A57FF2 /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
+		E27299352905236400888E62 /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
+		E2729938290531D300888E62 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E2A149752901376100EEF552 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		E2A149772901382D00EEF552 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		E2C831AB290123C40078D3AB /* InstaClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +73,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E27299342905234D00888E62 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				E221BB89290308E100A57FF2 /* UserProfileVC.swift */,
+				E27299352905236400888E62 /* UserProfileHeader.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		E2729937290531CE00888E62 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E2729938290531D300888E62 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E2A149742901375300EEF552 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,15 +120,18 @@
 		E2C831AD290123C40078D3AB /* InstaClone */ = {
 			isa = PBXGroup;
 			children = (
-				E2A149742901375300EEF552 /* Extensions */,
+				E2729937290531CE00888E62 /* Model */,
+				E27299342905234D00888E62 /* UserProfile */,
 				E2C831AE290123C40078D3AB /* AppDelegate.swift */,
 				E2C831B0290123C40078D3AB /* SceneDelegate.swift */,
+				E221BB87290307BD00A57FF2 /* ICTabBarController.swift */,
 				E2C831B2290123C40078D3AB /* ViewController.swift */,
 				E2C831B4290123C40078D3AB /* Main.storyboard */,
 				E2C831B7290123C60078D3AB /* Assets.xcassets */,
 				E2C831B9290123C60078D3AB /* LaunchScreen.storyboard */,
 				E2C831BC290123C60078D3AB /* Info.plist */,
 				E2D02A3E29029DA100D074B2 /* GoogleService-Info.plist */,
+				E2A149742901375300EEF552 /* Extensions */,
 			);
 			path = InstaClone;
 			sourceTree = "<group>";
@@ -146,7 +174,7 @@
 				};
 			};
 			buildConfigurationList = E2C831A6290123C40078D3AB /* Build configuration list for PBXProject "InstaClone" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -226,9 +254,13 @@
 			files = (
 				E2C831B3290123C40078D3AB /* ViewController.swift in Sources */,
 				E2A149762901376100EEF552 /* UIColor+Ext.swift in Sources */,
+				E221BB8A290308E100A57FF2 /* UserProfileVC.swift in Sources */,
+				E27299362905236400888E62 /* UserProfileHeader.swift in Sources */,
 				E2A149782901382D00EEF552 /* UIView+Ext.swift in Sources */,
+				E2729939290531D300888E62 /* User.swift in Sources */,
 				E2C831AF290123C40078D3AB /* AppDelegate.swift in Sources */,
 				E2C831B1290123C40078D3AB /* SceneDelegate.swift in Sources */,
+				E221BB88290307BD00A57FF2 /* ICTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -358,7 +390,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

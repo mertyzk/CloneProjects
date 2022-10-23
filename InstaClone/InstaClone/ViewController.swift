@@ -133,14 +133,19 @@ class ViewController: UIViewController {
                     }
                     
                     hud.dismiss(animated: true)
-                    self.addPhotoButton.imageView?.image = #imageLiteral(resourceName: "addphotobuttonimage")
-                    self.emailTextField.text = ""
-                    self.userNameTextField.text = ""
-                    self.passwordTextField.text = ""
-                    
+                    self.resetAppearance()
                 }
             }
         }
+    }
+    
+    fileprivate func resetAppearance(){
+        self.addPhotoButton.setImage(#imageLiteral(resourceName: "addphotobuttonimage").withRenderingMode(.alwaysOriginal), for: .normal)
+        self.addPhotoButton.layer.borderColor   = UIColor.clear.cgColor
+        self.addPhotoButton.layer.borderWidth   = 0
+        self.emailTextField.text                = ""
+        self.userNameTextField.text             = ""
+        self.passwordTextField.text             = ""
     }
     
     
